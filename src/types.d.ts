@@ -1,6 +1,11 @@
 export interface Description {
     title: string;
     comment: string;
-    time: date;
+    time: string; 
 }
 
+export interface ApiPosts {
+    [id: string]: {
+        description: Description;
+    };
+}

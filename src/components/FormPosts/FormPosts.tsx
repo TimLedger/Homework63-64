@@ -43,43 +43,43 @@ const FormPosts: React.FC = () => {
     }
   };
 
-  let form = (
-    <form onSubmit={onFormSubmit} autoComplete="off" className='form'>
-          <div className="form-group">
-            <textarea 
-              id="title" 
-              name="title" 
-              className="form-control"
-              rows={1}
-              required
-              value={description.title}
-              onChange={descriptionChanged}
-            />
-            <label htmlFor="title" className="form-label">Заголовок</label>
-          </div>
-          <div className="form-group">
-            <textarea 
-              id="comment"
-              name="comment"
-              className="form-control"
-              rows= {10}
-              required
-              value={description.comment}
-              onChange={descriptionChanged}
-            />
-            <label htmlFor="comment" className="form-label">Описание</label>
-          </div>
-          <button type="submit" className="form-submit-btn">Сохранить</button>
-    </form>
+  let button = (
+    <button type="submit" className="form-submit-btn">Сохранить</button>
   );
 
   if (loading) {
-    form = <Preloader />;
+    button = <Preloader />;
   }
 
   return (
     <div className="form-frame">
-        {form}
+      <form onSubmit={onFormSubmit} autoComplete="off" className='form'>
+        <div className="form-group">
+          <textarea 
+            id="title" 
+            name="title" 
+            className="form-control"
+            rows={1}
+            required
+            value={description.title}
+            onChange={descriptionChanged}
+          />
+          <label htmlFor="title" className="form-label">Заголовок</label>
+        </div>
+        <div className="form-group">
+          <textarea 
+            id="comment"
+            name="comment"
+            className="form-control"
+            rows= {10}
+            required
+            value={description.comment}
+            onChange={descriptionChanged}
+          />
+          <label htmlFor="comment" className="form-label">Описание</label>
+        </div>
+        {button}
+      </form>  
     </div>
   );
 };
