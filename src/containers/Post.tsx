@@ -10,6 +10,9 @@ const Post: React.FC = () => {
     <div>
       <Header />
       <div className="container">
+        <div className="page-body">
+          
+        </div>
       </div>
       <Footer />
     </div>

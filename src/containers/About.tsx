@@ -10,7 +10,10 @@ const About: React.FC = () => {
     <div>
       <Header />
       <div className="container">
-        <h2>О нас</h2>
+        <div className="page-body">
+          <h2>О нас</h2>
+          
+        </div>
       </div>
       <Footer />
     </div>

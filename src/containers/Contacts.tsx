@@ -10,7 +10,10 @@ const Contacts: React.FC = () => {
     <div>
       <Header />
       <div className="container">
-        <h2>Контакты</h2>
+        <div className="page-body">
+          <h2>Контакты</h2>
+          
+        </div>
       </div>
       <Footer />
     </div>

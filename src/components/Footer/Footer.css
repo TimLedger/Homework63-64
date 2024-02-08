@@ -25,6 +25,6 @@
 }
 
 .social-links a:hover {
-    color: red;
+    color: blueviolet;
     transition: 0.3s;
 }

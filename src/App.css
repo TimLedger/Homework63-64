@@ -8,6 +8,10 @@ h2{
   font-size: 30px;
 }
 
+.page-body{
+  min-height: 75vh;
+}
+
 .not-found{
   background-color: #fff;
   height: 100vh;

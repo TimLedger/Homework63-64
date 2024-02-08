@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header/Header';
+import FormPosts from '../components/FormPosts/FormPosts';
 import Footer from '../components/Footer/Footer';
 
 const AddPost: React.FC = () => {
@@ -10,7 +11,10 @@ const AddPost: React.FC = () => {
     <div>
       <Header />
       <div className="container">
-        <h2>Добавить пост</h2>
+        <div className="page-body">
+          <h2>Добавить пост</h2>
+          <FormPosts />
+        </div>
       </div>
       <Footer />
     </div>
