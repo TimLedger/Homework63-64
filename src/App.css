@@ -1,42 +1,77 @@
-#root {
+.container{
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 15px;
+}
+
+h2{
+  font-size: 30px;
+}
+
+.not-found{
+  background-color: #fff;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found-frame {
+  width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.not-found-title {
+  margin: 0;
+  font-size: 130px;
+  color: #333;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.not-found-link {
+  font-size: 1.2em;
+  color: #000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.not-found-link a {
+  text-transform: uppercase;
+  display: inline;
+  text-decoration: none;
+  color: black;
+  padding-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 11px 50px;
+  transition: 0.3s;
 }
 
-.card {
-  padding: 2em;
+.not-found-link a:hover {
+  color: black;
+  letter-spacing: 5px;
+  transition: 0.3s;
 }
 
-.read-the-docs {
-  color: #888;
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 5px 0;
+  border-radius: 4px ;
 }
