@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Description } from '../../types';
+import { ApiPost } from '../../types';
 import axiosApi from '../../axiosApi';
 import './FormPosts.css';
 import { useNavigate } from 'react-router-dom';
@@ -7,9 +7,9 @@ import Preloader from '../Preloader/Preloader';
 
 const FormPosts: React.FC = () => {
   const navigate = useNavigate();
-  const dispatchTime = new Date().toLocaleString();
+  const dispatchTime = new Date().toISOString();
   const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState<Description>({
+  const [description, setDescription] = useState<ApiPost>({
     title: '',
     comment: '',
     time: '',
@@ -29,10 +29,9 @@ const FormPosts: React.FC = () => {
     setLoading(true);
 
     const post = {
-      description: {
-        ...description,
-        time: dispatchTime 
-      },
+      title: description.title,
+      comment: description.comment,
+      time: dispatchTime 
     };
 
     try {
