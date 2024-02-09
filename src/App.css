@@ -31,6 +31,41 @@ h2{
   text-align: center;
 }
 
+.contacts-text{
+  max-width: 800px;
+  font-size: 18px;
+}
+
+.contacts-cards{
+  margin: 40px 0;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+
+.contacts-card{
+  width: 300px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 30px;
+  border-radius: 30px;
+  background: #242424;
+  box-shadow: 15px 15px 30px #343434,
+             -15px -15px 30px #141414;
+}
+
+.contacts-icon{
+  font-size: 60px;
+}
+
+.contacts-card h4{
+  font-size: 25px;
+}
 
 .not-found-title {
   margin: 0;

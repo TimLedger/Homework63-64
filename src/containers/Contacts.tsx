@@ -3,9 +3,9 @@ import Header from '../components/Header/Header';
 import Preloader from '../components/Preloader/Preloader';
 import Footer from '../components/Footer/Footer';
 import axiosApi from '../axiosApi';
-import { ApiPage } from '../types';
+import { ApiPageContacts } from '../types';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaMailBulk, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 const Contacts: React.FC = () => {
   useEffect(() => {
@@ -13,13 +13,13 @@ const Contacts: React.FC = () => {
   }, []);
 
   const location = useLocation();
-  const [contactData, setContactData] = useState<ApiPage | null>(null);
+  const [contactData, setContactData] = useState<ApiPageContacts | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchContactData = async () => {
       try {
-        const response = await axiosApi.get<ApiPage | null>('/pages/contact.json'); 
+        const response = await axiosApi.get<ApiPageContacts | null>('/pages/contact.json'); 
         setContactData(response.data);
       } finally {
         setLoading(false);
@@ -37,7 +37,24 @@ const Contacts: React.FC = () => {
     info = (
       <div>
         <h2>{contactData.title}</h2>
-        <p>{contactData.text}</p>
+          <p className='contacts-text'>{contactData.text}</p>
+          <ul className='contacts-cards'>
+            <li className='contacts-card'>
+              <div className='contacts-icon'><FaMailBulk /></div> 
+              <h4>Email</h4>
+              <p>{contactData.email}</p>
+            </li>
+            <li className='contacts-card'>
+              <div className='contacts-icon'><FaPhoneAlt /></div> 
+              <h4>Номер</h4>
+              <p>{contactData.phone}</p>
+            </li>
+            <li className='contacts-card'>
+              <div className='contacts-icon'><FaMapMarkerAlt /></div> 
+              <h4>Адрес</h4>
+              <p>{contactData.address}</p>
+            </li>
+          </ul>
       </div>
     );
   } else {

@@ -16,3 +16,10 @@ export interface ApiPage{
     title: string;
     text: string; 
 }
+
+export interface ApiPageContacts extends ApiPage{
+    address: string; 
+    phone: string; 
+    email: string; 
+}
+

@@ -16,7 +16,6 @@ const Home = () => {
 
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchPosts = useCallback(async () => {
     setLoading(true);
@@ -25,15 +24,14 @@ const Home = () => {
       const posts = response.data;
 
       if (posts) {
-        setPosts(Object.keys(posts).map(id => ({
+        const reversedPosts = Object.keys(posts).map(id => ({
           ...posts[id],
           id
-        })));
+        })).reverse();
+        setPosts(reversedPosts);
       } else {
         setPosts([]);
       }
-    } catch (error) {
-      setError('Ошибка при загрузке постов');
     } finally {
       setLoading(false);
     }
@@ -47,8 +45,6 @@ const Home = () => {
 
   if (loading) {
     load = <Preloader />;
-  } else if (error) {
-    load = <h1>{error}</h1>;
   } else if (posts.length > 0) {
     load = (
       <div>
