@@ -7,18 +7,14 @@ import { useParams } from 'react-router-dom';
 const AddPost: React.FC = () => {
   const params = useParams();
 
-  if (params.id) {
-    document.title = 'Изменить пост';
-  } else {
-    document.title = 'Добавить пост';
-  }
+  {params.id ? document.title = 'Изменить пост' : document.title = 'Добавить пост'}
 
   return (
     <div>
       <Header />
       <div className="container">
         <div className="page-body">
-          <h2>Добавить пост</h2>          
+          <h2>{params.id ? 'Редактировать' : 'Добавить пост'}</h2>  
           <FormPosts />
         </div>
       </div>

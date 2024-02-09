@@ -11,3 +11,8 @@ export interface Post extends ApiPost{
 export interface ApiPosts {
     [id: string]:  ApiPost;
 }
+
+export interface ApiPage{
+    title: string;
+    text: string; 
+}
