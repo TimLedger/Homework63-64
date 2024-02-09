@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ApiPost } from '../../types';
 import axiosApi from '../../axiosApi';
 import './FormPosts.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Preloader from '../Preloader/Preloader';
 
 const FormPosts: React.FC = () => {
+  const params = useParams();
   const navigate = useNavigate();
   const dispatchTime = new Date().toISOString();
   const [loading, setLoading] = useState(false);
@@ -14,6 +15,27 @@ const FormPosts: React.FC = () => {
     comment: '',
     time: '',
   });
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        setLoading(true);
+        const response = await axiosApi.get('/posts/' + params.id + '.json');
+        const postData = response.data;
+        setDescription({
+          title: postData.title,
+          comment: postData.comment,
+          time: '',
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (params.id) {
+      void fetchPost();
+    }
+  }, [params.id]);
 
   const descriptionChanged = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const {name, value} = event.target;
@@ -35,7 +57,11 @@ const FormPosts: React.FC = () => {
     };
 
     try {
-      await axiosApi.post('/posts.json', post);
+      if (params.id) {
+        await axiosApi.put('/posts/' + params.id + '.json', post);
+      } else {
+        await axiosApi.post('/posts.json', post);
+      }
       navigate('/');
     } finally {
       setLoading(false);
@@ -84,7 +110,3 @@ const FormPosts: React.FC = () => {
 };
 
 export default FormPosts;
-
-
-
-  
