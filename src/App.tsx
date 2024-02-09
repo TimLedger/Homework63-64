@@ -7,6 +7,7 @@ import Contacts from './containers/Contacts';
 import ContactsEdit from './containers/ContactsEdit';
 import AddPost from './containers/AddPost';
 import Post from './containers/Post';
+import FormPosts from './components/FormPosts/FormPosts';
 import NotFound from './containers/NotFound';
 import './App.css'
 
@@ -15,8 +16,9 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/posts" element={<Home />}/>
-      <Route path="/posts/:id" element={<Post/>}/>
-      <Route path="/posts/:id/edit" element={<AddPost/>}/>
+      <Route path="/posts/:id" element={<Post/>}>
+        <Route path="edit" element={<FormPosts/>}/>
+      </Route>
       <Route path="/new-post" element={<AddPost />} />
       <Route path="/about" element={<About />} >
         <Route path="edit" element={<AboutEdit />} />

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Header from '../components/Header/Header';
 import Preloader from '../components/Preloader/Preloader';
 import Footer from '../components/Footer/Footer';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, Outlet } from 'react-router-dom';
 import { ApiPost } from '../types';
 import axiosApi from '../axiosApi';
 import { FaBomb, FaEdit } from "react-icons/fa";
@@ -37,16 +37,19 @@ const Post = () => {
     document.title = post.title;
 
     postArea = (
-      <div className="post-item"> 
-          <h2 className="post-title">{post.title}</h2>
-          <p className="post-comment">{post.comment}</p>
-          <div className="post-bottom">
-            <div className="post-btns">
-              <button className='tooltip-container' onClick={deletePost}><FaBomb /><span className='tooltip'>Удалить</span></button>
-              <Link className='tooltip-container' to={'/posts/' + params.id +'/edit'}><FaEdit /><span className='tooltip'>Изменить</span></Link>
+      <div>
+        <div className="post-item"> 
+            <h2 className="post-title">{post.title}</h2>
+            <p className="post-comment">{post.comment}</p>
+            <div className="post-bottom">
+              <div className="post-btns">
+                <button className='tooltip-container' onClick={deletePost}><FaBomb /><span className='tooltip'>Удалить</span></button>
+                <Link className='tooltip-container' to="edit"><FaEdit /><span className='tooltip'>Изменить</span></Link>
+              </div>
+              <p className="post-time">{format(post.time, 'dd.MM.yyyy HH:mm' )}</p>
             </div>
-            <p className="post-time">{format(post.time, 'dd.MM.yyyy HH:mm' )}</p>
-          </div>
+        </div>
+        <Outlet/>
       </div>
     )
   } else if (!loading && !post) {
